@@ -1,5 +1,6 @@
 import { useState, useEffect} from 'react'
 import './App.css'
+import SideBar from './SideBar';
 let SEARCH_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects';
 let BASE_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=Auguste Renoir';
 
@@ -11,20 +12,23 @@ function getRandomIntInclusive(min, max) {
 
 function ArtInfo({art_piece}){
   return(
-    <ul className = "artInfo">
-      <li>
-        <h3>Title: {art_piece.title}</h3>
-      </li>
-      <li>
-        <h3>Artist: {art_piece.artistDisplayName}</h3>
-      </li>
-      <li>
-        <h3>Medium: {art_piece.medium}</h3>
-      </li>
-      <li>
-        <a href={art_piece.objectURL}>Learn More</a>
-      </li>
-    </ul>
+    <div className = "artInfo">
+      <h2>Artwork Details</h2>
+      <ul>
+        <li>
+          <h3>Title:</h3>{art_piece.title}
+        </li>
+        <li>
+          <h3>Artist:</h3> {art_piece.artistDisplayName}
+        </li>
+        <li>
+          <h3>Medium:</h3> {art_piece.medium}
+        </li>
+        <li>
+          <a href={art_piece.objectURL}>Learn More</a>
+        </li>
+      </ul>
+    </div>
   )
 }
 
@@ -74,11 +78,17 @@ function App() {
 
   return (
   <>
-    <button onClick = {() => getArt(artObj.objectIDs[getRandomIntInclusive(0,artObj.objectIDs.length)])} className = "generateArt">
+    
+    
+  
+    <SideBar></SideBar>
+    <div className = "main">
+      <ArtImg art_piece={art} loading = {loading}></ArtImg>
+      <ArtInfo art_piece={art}></ArtInfo>
+      <button onClick = {() => getArt(artObj.objectIDs[getRandomIntInclusive(0,artObj.objectIDs.length)])} className = "generateArt">
       Generate Art
-    </button>
-    <ArtImg art_piece={art} loading = {loading}></ArtImg>
-    <ArtInfo art_piece={art}></ArtInfo>
+      </button>
+    </div>
   </>
   );
 }
