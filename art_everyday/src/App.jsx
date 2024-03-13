@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import './App.css'
 import SideBar from './SideBar';
+import noImg from './assets/No_image_available.svg.png';
 let SEARCH_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects';
 let BASE_URL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=Auguste Renoir';
 
@@ -37,12 +38,12 @@ function ArtInfo({art_piece}){
 function ArtImg({art_piece,loading}){
   if(loading){
     return(
-      <h2>Loading...</h2>
+      <div className = "loader"></div>
     )
   }
   if(art_piece.primaryImage == ""){
     return(
-      <h2>No Image...</h2>
+      <img src = {noImg} className = "artImg"/>
     )
   }
   return(

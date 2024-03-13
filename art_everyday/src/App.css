@@ -26,16 +26,20 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width:100vw;
+    width:100%;
+
+    overflow:auto;
 
 }
 
 .artImg{
     background-color: var(--dark_beige);
     padding: 5rem;
-    max-height: 50rem;
+    width:fit-content;
     max-width: 70rem;
+    max-height: 35rem;
     margin: 10rem;
+    overflow:auto;
 }
 
 .generateArt{
@@ -46,18 +50,31 @@ body{
 }
 
 .artInfo{
-    
-    min-width: 20rem;
     max-width: 30rem;
+    max-height: 50rem;
+    width:fit-content;
     margin:1rem;
     border-left:solid;
     padding : 5rem;
+    overflow: auto;
 }
 
 .artInfo ul{
     list-style-type:none;
-
 }
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #000 #0000;
+    animation: l1 1s infinite;
+    margin: 10rem;
+  }
+  @keyframes l1 {to{transform: rotate(.5turn)}}
+
 
 
 
